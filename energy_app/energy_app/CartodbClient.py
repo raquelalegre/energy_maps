@@ -2,6 +2,9 @@ import json
 from cartodb import CartoDBAPIKey, CartoDBException
 
 class CartodbClient:
+    """
+    Client class that connects to CartoDB SQL API to query for tweets.
+    """
     def __init__(self):
         self.api = self.get_api()
 
@@ -25,6 +28,10 @@ class CartodbClient:
         return api
 
     def get_tweets(self, where):
+        """
+        Elaborate SQL query to get all necessary parameters for data plotting
+        given filter WHERE clause.
+        """
         sql_query = """
             SELECT actor_preferredusername, body, postedtime, category_terms,
             the_geom_webmercator
@@ -36,17 +43,26 @@ class CartodbClient:
         return tweets
 
     def get_all_tweets(self):
+        """
+        Gets global tweets.
+        """
         sql_where = ''
         tweets = self.get_tweets(sql_where)
         return tweets
 
     def get_tweets_by_company(self, company):
+        """
+        Returns only tweets about a given company.
+        """
         sql_where = "WHERE category_terms LIKE '%{0}%'".format(company)
         tweets = self.get_tweets(sql_where)
         return tweets
 
     def get_tweets_by_area(self, area):
-        #Use postgres to filter by area
+        """
+        Returns only tweets about a given area.
+        """
+        # Use PostGIS to filter by area
         sql_query = """
         SELECT * FROM
             (SELECT * FROM energy_tweets_table) AS et,
