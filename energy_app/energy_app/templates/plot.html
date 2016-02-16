@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- Plotly.js -->
     <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script>
-
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     <title>{% block title %}{% endblock %} - Time Series</title>
@@ -17,23 +17,17 @@
     {% endblock %}
   </head>
   <body>
-
-    <h3>{{id}}</h3>
-    <div id="{{id}}"></div>
-
-    <!--div id="menu">{% include 'menu.html' %}</div>
-    <div id="content">{% block content %}{% endblock %}</div-->
+        <div id="timeseries"></div>
   </body>
   <footer>
     <script type="text/javascript">
+      var graphs = {{graph | safe}};
 
-    var id = {{id | safe}};
-    var data = {{data | safe}};
-    var layout = {{layout | safe }}
-
-    Plotly.plot(id,
-                data,
-                layout || {});
+      for(var i in graphs) {
+          Plotly.plot('timeseries',
+                      graphs[i].data,
+                      graphs[i].layout || {});
+      }
     </script>
   </footer>
 </html>
