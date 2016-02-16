@@ -18,8 +18,16 @@ class CartodbClient:
         api = CartoDBAPIKey(api_key, cartodb_domain)
 
         try:
-            print(api.sql('SELECT * FROM energy_tweets'))
-        except CartoDBException as e:
-            print("Couldn't connect to CartoDB API: ", e)
+            api.sql('SELECT * FROM energy_tweets_table')
+        except CartoDBException:
+            raise
 
         return api
+
+    def get_tweets(self):
+        """
+        Connect to CartoDB and get list of energy tweets.
+        """
+        tweets = []
+        tweets_json = self.api.sql('SELECT * FROM energy_tweets_table')
+        return tweets
