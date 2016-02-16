@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+
+    <!-- D3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>{% block title %}{% endblock %} - Time Series</title>
+
+    {% endblock %}
+  </head>
+  <body>
+
+    <h3>{{id}}</h3>
+    <div id="{{id}}"></div>
+
+    <!--div id="menu">{% include 'menu.html' %}</div>
+    <div id="content">{% block content %}{% endblock %}</div-->
+  </body>
+  <footer>
+    <script type="text/javascript">
+
+    var id = {{id | safe}};
+    var data = {{data | safe}};
+    var layout = {{layout | safe }}
+
+    Plotly.plot(id,
+                data,
+                layout || {});
+    </script>
+  </footer>
+</html>
