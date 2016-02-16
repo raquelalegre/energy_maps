@@ -10,36 +10,26 @@ class DataPlotter:
         self.processor = DataProcessor(self.data)
 
     def get_graph(self):
+        #Get the time series data
+        time_series = self.processor.get_time_series()
+
+        #Save all the information in a list we can access from the view template
         graph = [
             dict(
                 data=[
                     dict(
-                        x=[1, 2, 3],
-                        y=[10, 20, 30],
-                        type='scatter'
-                    ),
+                        x=time_series.index,
+                        y=time_series
+                    )
                 ],
                 layout=dict(
-                    title='test graph'
-                )
+                    title='Tweet Frequency'
+                ),
+                id = 'timeseries'
             )
         ]
 
-    def get_data(self):
-        data = [
-            dict(
-                x=[1, 2, 3],
-                y=[10, 20, 30],
-                type='scatter'
-            )
-        ]
-        return data
+        # Plotly needs the graph/pandas data encoded in compatible JSON format
+        graph = json.dumps(graph, cls=plotly.utils.PlotlyJSONEncoder)
 
-    def get_tittle(self):
-        return "title"
-
-    def get_layout(self):
-        layout = dict(
-            title='test graph'
-        )
-        return layout
+        return graph
