@@ -14,10 +14,16 @@ def show_plot():
     graph = plotter.get_graph()
     return render_template('plot.html', graph=graph)
 
-@app.route('/plot/<area>')
+@app.route('/plot/area/<area>')
 def show_plot_by_area(area):
     plotter = DataPlotter()
-    graph = plotter.get_graph(area)
+    graph = plotter.get_graph(area=area)
+    return render_template('plot.html', graph=graph)
+
+@app.route('/plot/company/<company>')
+def show_plot_by_company(company):
+    plotter = DataPlotter()
+    graph = plotter.get_graph(company=company)
     return render_template('plot.html', graph=graph)
 
 @app.route('/map')
