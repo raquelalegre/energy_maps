@@ -24,13 +24,6 @@ class CartodbClient:
 
         return api
 
-    def get_tweets(self):
-        """
-        Connect to CartoDB and get list of energy tweets.
-        """
-        tweets = self.api.sql('SELECT * FROM energy_tweets_table')
-        return tweets
-
     def get_tweets(self, where):
         sql_query = """
             SELECT actor_preferredusername, body, postedtime,
@@ -43,7 +36,8 @@ class CartodbClient:
         return tweets
 
     def get_all_tweets(self):
-        tweets = self.get_tweets('')
+        sql_where = ''
+        tweets = self.get_tweets(sql_where)
         return tweets
 
     def get_tweets_by_company(self, company):
