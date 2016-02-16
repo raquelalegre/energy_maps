@@ -5,15 +5,23 @@ from DataProcessor import DataProcessor
 
 class DataPlotter:
     def __init__(self):
-        client = CartodbClient()
-        self.data = client.get_all_tweets()
-        self.processor = DataProcessor(self.data)
+        self.client = CartodbClient()
 
-    def get_graph(self):
-        #Get the time series data
-        time_series = self.processor.get_time_series()
+    def get_graph(self, area=None, company=None):
+        # Get all tweets or filtered by area
+        if area:
+            data = self.client.get_tweets_by_area(area)
+        elif company:
+            data = self.client.get_tweets_by_company(company)
+        else:
+            data = self.client.get_all_tweets()
 
-        #Save all the information in a list we can access from the view template
+        processor = DataProcessor(data)
+
+        # Get the time series data
+        time_series = processor.prepare_time_series()
+
+        # Save all the graph info in a list we can access from the view template
         graph = [
             dict(
                 data=[
