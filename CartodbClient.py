@@ -28,6 +28,5 @@ class CartodbClient:
         """
         Connect to CartoDB and get list of energy tweets.
         """
-        tweets = []
         tweets_json = self.api.sql('SELECT * FROM energy_tweets_table')
-        return tweets
+        return tweets_json
