@@ -1,0 +1,7 @@
+cartodb==0.8.1
+Flask==0.10.1
+Jinja2==2.8
+numpy==1.10.4
+pandas==0.17.1
+plotly==1.9.5
+pytest==2.8.7
