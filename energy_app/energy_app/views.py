@@ -11,10 +11,12 @@ def layout(graph=None):
 @app.route('/plot')
 def show_plot():
     plotter = DataPlotter()
-    title = plotter.get_tittle()
-    data = plotter.get_data()
-    layout = plotter.get_layout()
-    return render_template('plot.html', id=title, data=data, layout=layout)
+    graph = plotter.get_graph()
+    return render_template('plot.html', graph=graph)
+
+@app.route('/map')
+def show_map():
+    pass
 
 @app.route('/company/<company>')
 def show_company(company):
