@@ -16,7 +16,7 @@ def show_plot():
 
 @app.route('/map')
 def show_map():
-    pass
+    return render_template('map.html')
 
 @app.route('/company/<company>')
 def show_company(company):
