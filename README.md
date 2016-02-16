@@ -14,13 +14,41 @@ results, and plots in time series graphs filtered by area or company.
 To obtain Energy Maps and run it:
 
 ```
-git clone
+git clone https://github.com/raquel-ucl/energy_maps.git
 pip install -r energy_maps/requirements.txt
 cd energy_maps/energy_app
 python runapp.py
 ```
 
 Then point your browser to http://localhost:5000.
+
+Note that the time series plots won't work without my CartoDB API key (which is
+used to query the PostGIS DB). If you want to use your own, place your key in
+a `secrets.json` file in this format:
+
+```json
+{
+    "api_key": "YOUR_KEY"
+}
+```
+
+The `secrets.json` file must be placed as shown below:
+
+```
+├── README.md
+├── energy_app
+│   ├── energy_app
+│   │   ├── CartodbClient.py
+│   │   ├── DataPlotter.py
+│   │   ├── DataProcessor.py
+│   │   ├── __init__.py
+│   │   ├── templates
+│   │   ├── test
+│   │   └── views.py
+│   ├── runapp.py
+│   └── secrets.json
+└── requirements.txt
+```
 
 
 # Run tests
