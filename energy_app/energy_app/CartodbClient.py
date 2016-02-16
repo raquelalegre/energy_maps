@@ -18,7 +18,7 @@ class CartodbClient:
         api = CartoDBAPIKey(api_key, cartodb_domain)
 
         try:
-            api.sql('SELECT * FROM energy_tweets_table')
+            api.sql('SELECT * FROM energy_tweets')
         except CartoDBException:
             raise
 
@@ -28,7 +28,7 @@ class CartodbClient:
         sql_query = """
             SELECT actor_preferredusername, body, postedtime, category_terms,
             the_geom_webmercator
-            FROM energy_tweets_table
+            FROM energy_tweets
             {0}""".format(where)
         results = self.api.sql(sql_query)
         #tweets info is contained in the rows field of the returned json results
