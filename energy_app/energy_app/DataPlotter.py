@@ -7,10 +7,12 @@ class DataPlotter:
     def __init__(self):
         self.client = CartodbClient()
 
-    def get_graph(self, area=None):
+    def get_graph(self, area=None, company=None):
         # Get all tweets or filtered by area
         if area:
             data = self.client.get_tweets_by_area(area)
+        elif company:
+            data = self.client.get_tweets_by_company(company)
         else:
             data = self.client.get_all_tweets()
 
