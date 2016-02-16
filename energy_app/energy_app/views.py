@@ -1,7 +1,10 @@
-from flask import Flask, url_for, render_template
-
-app = Flask(__name__)
-
+from energy_app import app
+from flask import url_for, render_template
+#from .CartoDBClient import CartoDBClient
+#import json
+#import plotly
+#import pandas as pd
+#import numpy as np
 
 @app.route('/')
 @app.route('/graph/')
@@ -24,7 +27,3 @@ with app.test_request_context():
     print url_for('show_company', company="edfenergy")
     print url_for('show_tweet', tweet_id="23")
     print url_for('static', filename='style.css')
-
-
-if __name__ == '__main__':
-    app.run()
