@@ -2,10 +2,16 @@ import pandas as pd
 import numpy as np
 
 class DataProcessor:
+    """
+    Class in charge of data manipulation, cleaning and preparation to plot.
+    """
     def __init__(self, data):
         self.data = pd.DataFrame(data)
 
     def prepare_time_series(self):
+        """
+        Elaborate data to get the number of tweets per hourly interval.
+        """
         #Group tweets by time: index by postedtime and resample hourly
         self.data['postedtime'] = pd.to_datetime(self.data['postedtime'])
         timed = self.data.set_index('postedtime')
@@ -23,12 +29,5 @@ class DataProcessor:
 
         return time_series
 
-    def get_histogram(self):
-        pass
-
-    def filter_data_points_by_geo(self):
-        """
-        Many data points come from countries other than the UK and introduce
-        noise.
-        """
+    def clean_data(self):
         pass
