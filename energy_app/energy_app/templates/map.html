@@ -1,7 +1,33 @@
-<iframe
-width="100%"
-height="100%"
-frameborder="0"
-src="https://clemenciozapatilla.cartodb.com/viz/1c339672-d4e1-11e5-93ca-0e98b61680bf/embed_map"
->
-</iframe>
+{% block content %}
+  {% if category == "TorqueCummulative" %}
+  <iframe
+  width="100%"
+  height="100%"
+  frameborder="0"
+  src="https://clemenciozapatilla.cartodb.com/viz/522e486e-d4e4-11e5-8a37-0e5db1731f59/embed_map"
+  >
+  </iframe>
+  {% elif category == "TorqueCat" %}
+  <iframe
+  width="100%"
+  height="100%"
+  frameborder="0"
+  src="https://clemenciozapatilla.cartodb.com/viz/3a2bea9a-d4e5-11e5-b74d-0ecfd53eb7d3/embed_map"
+  >
+  {% elif category == "Heatmap" %}
+  <iframe
+  width="100%"
+  height="100%"
+  frameborder="0"
+  src="https://clemenciozapatilla.cartodb.com/viz/97fb7fe6-d4e5-11e5-b7c7-0ea31932ec1d/embed_map"
+  >
+  {% else %}
+    <iframe
+    width="100%"
+    height="100%"
+    frameborder="0"
+    src="https://clemenciozapatilla.cartodb.com/viz/1c339672-d4e1-11e5-93ca-0e98b61680bf/embed_map"
+    >
+    </iframe>
+  {% endif %}
+{% endblock %}
