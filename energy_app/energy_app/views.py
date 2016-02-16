@@ -15,8 +15,9 @@ def show_plot():
     return render_template('plot.html', graph=graph)
 
 @app.route('/map')
-def show_map():
-    pass
+@app.route('/map/<category>')
+def show_map(category=None):
+    return render_template('map.html', category=category)
 
 @app.route('/company/<company>')
 def show_company(company):
