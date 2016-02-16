@@ -14,6 +14,12 @@ def show_plot():
     graph = plotter.get_graph()
     return render_template('plot.html', graph=graph)
 
+@app.route('/plot/<area>')
+def show_plot_by_area(area):
+    plotter = DataPlotter()
+    graph = plotter.get_graph(area)
+    return render_template('plot.html', graph=graph)
+
 @app.route('/map')
 @app.route('/map/<category>')
 def show_map(category=None):
