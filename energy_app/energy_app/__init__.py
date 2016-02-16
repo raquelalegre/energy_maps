@@ -1,3 +1,4 @@
+from CartodbClient import CartodbClient
 from flask import Flask
 app = Flask(__name__)
 
