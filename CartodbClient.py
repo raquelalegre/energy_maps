@@ -28,5 +28,25 @@ class CartodbClient:
         """
         Connect to CartoDB and get list of energy tweets.
         """
-        tweets_json = self.api.sql('SELECT * FROM energy_tweets_table')
-        return tweets_json
+        tweets = self.api.sql('SELECT * FROM energy_tweets_table')
+        return tweets
+
+    def get_tweets(self, where):
+        sql_query = """
+            SELECT actor_preferredusername, body, postedtime,
+            the_geom_webmercator
+            FROM energy_tweets_table
+            {0}""".format(where)
+        results = self.api.sql(sql_query)
+        #tweets info is contained in the rows field of the returned json results
+        tweets = results['rows']
+        return tweets
+
+    def get_all_tweets(self):
+        tweets = self.get_tweets('')
+        return tweets
+
+    def get_tweets_by_company(self, company):
+        sql_where = "WHERE body LIKE '%{0}%'".format(company)
+        tweets = self.get_tweets(sql_where)
+        return tweets

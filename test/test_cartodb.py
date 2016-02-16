@@ -14,8 +14,13 @@ class TestCartoDB:
         except CartoDBException:
             pytest.fail("Couldn't connect to CartoDB")
 
-    def test_get_tweets(self):
+    def test_get_all_tweets(self):
         client = CartodbClient()
-        api = client.api
-        tweets = api.sql('SELECT * FROM energy_tweets_table')
+        tweets = client.get_all_tweets()
+        assert len(tweets) > 0
+
+    def test_get_tweets_by_company(self):
+        company = 'edfenergy'
+        client = CartodbClient()
+        tweets = client.get_tweets_by_company(company)
         assert len(tweets) > 0
