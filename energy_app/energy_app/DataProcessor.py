@@ -5,7 +5,7 @@ class DataProcessor:
     def __init__(self, data):
         self.data = pd.DataFrame(data)
 
-    def get_time_series(self):
+    def prepare_time_series(self):
         #Group tweets by time: index by postedtime and resample hourly
         self.data['postedtime'] = pd.to_datetime(self.data['postedtime'])
         timed = self.data.set_index('postedtime')
@@ -24,4 +24,11 @@ class DataProcessor:
         return time_series
 
     def get_histogram(self):
+        pass
+
+    def filter_data_points_by_geo(self):
+        """
+        Many data points come from countries other than the UK and introduce
+        noise.
+        """
         pass
