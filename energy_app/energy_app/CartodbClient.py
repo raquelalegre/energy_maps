@@ -26,7 +26,7 @@ class CartodbClient:
 
     def get_tweets(self, where):
         sql_query = """
-            SELECT actor_preferredusername, body, postedtime,
+            SELECT actor_preferredusername, body, postedtime, category_terms,
             the_geom_webmercator
             FROM energy_tweets_table
             {0}""".format(where)
