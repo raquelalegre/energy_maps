@@ -4,10 +4,16 @@ from CartodbClient import CartodbClient
 from DataProcessor import DataProcessor
 
 class DataPlotter:
+    """
+    Formats data to be plotted by Plotly.
+    """
     def __init__(self):
         self.client = CartodbClient()
 
     def get_graph(self, area=None, company=None):
+        """
+        Queries tweets by given area/company filter.
+        """
         # Get all tweets or filtered by area
         if area:
             data = self.client.get_tweets_by_area(area)
