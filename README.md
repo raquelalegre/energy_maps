@@ -62,6 +62,7 @@ py.test -v
 
 # Future work
 This is my first Flask application and I intend to improve this as I learn more.
+
 The first intention when designing this application was to categorize tweets
-by good, bad or neutral reviews about, but that functionality is not included
-yet.
+by good, bad or neutral reviews about UK Energy companies, but that 
+functionality has not been included yet.
