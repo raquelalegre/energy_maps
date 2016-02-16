@@ -17,13 +17,13 @@ class DataPlotter:
         # Get all tweets or filtered by area
         if area:
             data = self.client.get_tweets_by_area(area)
-            suffix = ' - ' + area
+            suffix = area
         elif company:
             data = self.client.get_tweets_by_company(company)
-            suffix = ' - ' + company
+            suffix = company
         else:
             data = self.client.get_all_tweets()
-            suffix = ' - Global'
+            suffix = 'Global'
 
         processor = DataProcessor(data)
 
@@ -40,7 +40,7 @@ class DataPlotter:
                     )
                 ],
                 layout=dict(
-                    title='Tweet Frequency' + suffix
+                    title='Tweet Frequency - ' + suffix
                 ),
                 id = 'timeseries'
             )
