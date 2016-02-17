@@ -1,12 +1,25 @@
-  <a href="./plot">Time Series Global</a>
-  <a href="./plot/company/edf">Time Series EDF</a>
-  <a href="./plot/company/eon">Time Series EON</a>
-  <a href="./plot/company/britishgas">Time Series British Gas</a>
-  <a href="./plot/company/ovo">Time Series OVO Energy</a>
-  <a href="./plot/company/ecotricity">Time Series Ecotricity</a>
-  <a href="./plot/company/tempus">Time Series Tempus Energy</a>
-  <a href="./plot/area/uk_administrative_regions">Time Series All UK</a>
-  <a href="./map">Interactive tweets on a map</a>
-  <a href="./map/TorqueCat">Animation by company</a>
-  <a href="./map/Heatmap">Animated Heatmap</a>
-  <a href="./map/TorqueCummulative">Cummulative frequency animation.</a>
+{% block content %}
+  <h1>Tweet Frequency - Time Series</h1>
+  <form action="" method="post" name="login">
+      {{ form.hidden_tag() }}
+      <p>
+          Type the name of a company to see a plot of its tweet frequency:
+          {{ form.company(size=20) }}<br>
+      </p>
+
+      <p>
+          Choose the area coverage:
+          {{ form.area }}<br>
+      </p>
+
+      <h1>Tweet Frequency - Maps</h1>
+      <p>
+          Choose type of map graph:
+          {{ form.map_type }}<br>
+      </p>
+
+      <p><input type="submit" value="Show Graph"></p>
+  </form>
+{% endblock %}
+
+  
