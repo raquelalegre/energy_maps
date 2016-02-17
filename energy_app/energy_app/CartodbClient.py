@@ -54,7 +54,7 @@ class CartodbClient:
         """
         Returns only tweets about a given company.
         """
-        sql_where = "WHERE category_terms LIKE '%{0}%'".format(company)
+        sql_where = "WHERE category_terms LIKE '%{0}%'".format(company.lower())
         tweets = self.get_tweets(sql_where)
         return tweets
 
