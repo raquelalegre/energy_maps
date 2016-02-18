@@ -23,8 +23,6 @@ class DataProcessor:
         time_range = pd.date_range(begin, end, freq='H')
 
         #Index pandas object by time
-        print hourly.size().values
-        print time_range
         time_series = pd.Series(hourly.size().values, index=time_range)
 
         return time_series
