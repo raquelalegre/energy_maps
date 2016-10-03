@@ -1,7 +1,7 @@
 
 # Energy Maps
 This Flask application presents several plots and maps with information
-obtained from tweets from 18th January 2016 - 16th January 2016 about British
+obtained from tweets from 18th January 2016 - 16th February 2016 about British
 energy companies.
 
 These tweets have been stored in a CartoDB account and georeferenced so that
@@ -59,6 +59,18 @@ test the data retrieval. To run them:
 cd energy_app/
 py.test -v
 ```
+
+# Examples
+Here are some predefined URLs that should work:
+* http://localhost:5000/map/AnimationByCategory
+* http://localhost:5000/map/TorqueCummulative
+* http://localhost:5000/map/AnimationCummulative
+* http://localhost:5000/map/Heatmap
+* http://localhost:5000/plot/area/uk_administrative_regions
+* http://localhost:5000/plot/area/Global
+* http://localhost:5000/plot/company/edf
+* http://localhost:5000/plot/company/tempus
+
 
 # Future work
 This is my first Flask application and I intend to improve this as I learn more.
